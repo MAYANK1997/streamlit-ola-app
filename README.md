@@ -1,4 +1,4 @@
-# 🎈 Blank app template
+# 🎈 OLA Ride Insights
 
 A simple Streamlit app template for you to modify!
 
