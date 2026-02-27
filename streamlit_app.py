@@ -18,13 +18,15 @@ st.title("🚖 OLA Ride Analysis")
 # -------------------------------------------------
 # DATABASE CONNECTION
 # -------------------------------------------------
+import os
+
 @st.cache_resource
 def get_engine():
-    DB_USER = st.secrets["DB_USER"]
-    DB_PASSWORD = st.secrets["DB_PASSWORD"]
-    DB_HOST = st.secrets["DB_HOST"]
-    DB_PORT = st.secrets["DB_PORT"]
-    DB_NAME = st.secrets["DB_NAME"]
+    DB_USER = os.getenv("DB_USER")
+    DB_PASSWORD = os.getenv("DB_PASSWORD")
+    DB_HOST = os.getenv("DB_HOST")
+    DB_PORT = os.getenv("DB_PORT")
+    DB_NAME = os.getenv("DB_NAME")
 
     connection_string = (
         f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}"
@@ -124,7 +126,7 @@ tab1, tab2 = st.tabs(["📊 Power BI Dashboard", "📈 SQL Query Analysis"])
 # =================================================
 with tab1:
     st.subheader("📊 Interactive Power BI Dashboard")
-    powerbi_url = st.secrets["POWERBI_EMBED_URL"]
+    powerbi_url = os.getenv("POWERBI_EMBED_URL")
 
     st.components.v1.iframe(
         powerbi_url,
